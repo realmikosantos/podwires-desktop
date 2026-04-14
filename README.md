@@ -2,6 +2,9 @@
 
 Native desktop wrapper for [podwires.com](https://podwires.com) — Windows, macOS, and Linux.
 
+Repo: <https://github.com/realmikosantos/podwires-desktop>
+Downloads: <https://github.com/realmikosantos/podwires-desktop/releases/latest>
+
 Thin Electron shell around the live site. The site is already a PWA (manifest
 + service worker live in `aktor-theme/inc/pwa.php`), so this app gets offline
 support, push notifications, and cache strategies "for free" from the existing
