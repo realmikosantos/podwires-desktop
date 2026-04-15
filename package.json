@@ -1,6 +1,6 @@
 {
   "name": "podwires-desktop",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Podwires Desktop — native wrapper for podwires.com (Windows, macOS, Linux).",
   "main": "src/main.js",
   "author": {
@@ -68,7 +68,8 @@
         }
       ],
       "icon": "build/icon.png",
-      "hardenedRuntime": true,
+      "identity": null,
+      "hardenedRuntime": false,
       "gatekeeperAssess": false,
       "darkModeSupport": true
     },
@@ -91,7 +92,11 @@
           ]
         }
       ],
-      "icon": "build/icon.png"
+      "icon": "build/icon.png",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-portable.exe"
     },
     "nsis": {
       "oneClick": false,
