@@ -25,6 +25,11 @@ const {
 
 const Store = require('electron-store');
 
+// GPU compositing on some Macs paints the window plain white until a zoom or
+// resize forces a repaint (and it recurs on every launch). Software rendering
+// avoids it entirely; this is a text-and-images site, so the cost is negligible.
+app.disableHardwareAcceleration();
+
 /* =============================================
    CONFIG
    ============================================= */
@@ -170,6 +175,15 @@ function createWindow() {
         <p><code>${validatedURL || ''}</code></p>
       </div>`;
     mainWindow.webContents.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+  });
+
+  // If the renderer process dies (crash, GPU fault), reload rather than
+  // leaving the user staring at a dead white window.
+  mainWindow.webContents.on('render-process-gone', (_e, details) => {
+    if (details.reason === 'clean-exit') return;
+    if (mainWindow && !mainWindow.isDestroyed()) {
+      mainWindow.webContents.reload();
+    }
   });
 
   mainWindow.on('closed', () => {
