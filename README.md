@@ -38,7 +38,7 @@ npm start          # runs the app against https://podwires.com
 ## Build distributable installers
 
 ```bash
-npm run dist:mac      # .dmg + .zip  (arm64 + x64)
+npm run dist:mac      # .dmg + .zip  (universal + arm64 + x64)
 npm run dist:win      # .exe (NSIS) + portable .exe
 npm run dist:linux    # AppImage + .deb
 npm run dist:all      # everything (cross-compile where supported)
@@ -67,6 +67,17 @@ podwires-desktop/
 - The wrapper simply loads `https://podwires.com/`; all UI, auth, routing, and
   offline behaviour comes from the WordPress theme's existing PWA.
 - No backend coupling — no DB access, no shared env. Safe to ship independently.
+
+## Mac builds: Universal first
+
+From v1.1.3 the Mac target also produces a **Universal** build
+(`Podwires-<version>-universal.dmg` / `-universal-mac.zip`) — one file that runs
+natively on Apple Silicon and Intel. The theme (`aktor-theme/inc/desktop-app.php`)
+reads the latest GitHub release and, when that file is present, gives every Mac
+visitor the Universal link instead of guessing their chip. The chip-specific
+builds are still produced for anyone who wants the smaller download.
+
+The Universal build is about twice the size of a single-arch one (~180 MB dmg).
 
 ## Code signing & notarisation
 
