@@ -70,7 +70,7 @@ podwires-desktop/
 
 ## Mac builds: Universal first
 
-From v1.1.3 the Mac target also produces a **Universal** build
+From v1.1.4 the Mac target also produces a **Universal** build
 (`Podwires-<version>-universal.dmg` / `-universal-mac.zip`) — one file that runs
 natively on Apple Silicon and Intel. The theme (`aktor-theme/inc/desktop-app.php`)
 reads the latest GitHub release and, when that file is present, gives every Mac

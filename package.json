@@ -1,6 +1,6 @@
 {
   "name": "podwires-desktop",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "Podwires Desktop — native wrapper for podwires.com (Windows, macOS, Linux).",
   "main": "src/main.js",
   "author": {
@@ -76,7 +76,7 @@
       "darkModeSupport": true
     },
     "dmg": {
-      "title": "Podwires ${version}",
+      "title": "Podwires ${version} ${arch}",
       "icon": "build/icon.png"
     },
     "win": {
